@@ -17,6 +17,20 @@
     <scala.binary.version>2.12</scala.binary.version>
   </properties>
 
+<!--  <repositories>-->
+<!--    &lt;!&ndash; 设置自定义仓库地址 &ndash;&gt;-->
+<!--    <repository>-->
+<!--      <id>maven-public</id>-->
+<!--      <url>cent</url>>-->
+<!--      <releases>-->
+<!--        <enabled>true</enabled>-->
+<!--      </releases>-->
+<!--      <snapshots>-->
+<!--        <enabled>true</enabled>-->
+<!--      </snapshots>-->
+<!--    </repository>-->
+<!--  </repositories>-->
+
   <dependencies>
     <dependency>
       <groupId>org.apache.flink</groupId>
@@ -58,11 +72,11 @@
       <artifactId>flink-table-common</artifactId>
       <version>${flink.version}</version>
     </dependency>
-<!--    <dependency>-->
-<!--      <groupId>org.apache.flink</groupId>-->
-<!--      <artifactId>flink-connector-kafka</artifactId>-->
-<!--      <version>${flink.version}</version>-->
-<!--    </dependency>-->
+    <!--    <dependency>-->
+    <!--      <groupId>org.apache.flink</groupId>-->
+    <!--      <artifactId>flink-connector-kafka</artifactId>-->
+    <!--      <version>${flink.version}</version>-->
+    <!--    </dependency>-->
     <dependency>
       <groupId>org.apache.flink</groupId>
       <artifactId>flink-connector-files</artifactId>
