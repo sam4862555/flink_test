@@ -34,24 +34,31 @@ public class TableFunctionTest {
                 ")"
         );
 
+        //todo : 几种写法都实验一下
+//        //方式一: left join , 重新命名
+//        TableResult resTable = tEnv.executeSql("" +
+//                "select " +
+//                "   order_id " + "," +
+//                "   price " + "," +
+//                "   day_str " + "," +
+//                "   time_str " +
+//                "from orders " +
+//                "left join lateral table(SplitTime(cast(order_time as string))) AS T(day_str, time_str) on true");
+//        resTable.print();
+
+        //方式二: lateral table , 重新命名
         TableResult resTable = tEnv.executeSql("" +
                 "select " +
                 "   order_id " + "," +
                 "   price " + "," +
                 "   day_str " + "," +
                 "   time_str " +
-                "from orders " +
-                "left join lateral table(SplitTime(cast(order_time as string))) AS T(day_str, time_str) on true");
+                "from orders, lateral table(SplitTime(cast(order_time as string))) AS T(day_str, time_str)");
         resTable.print();
 
-//        TableResult resTable = tEnv.executeSql("" +
-//                "select " +
-//                "   order_id " + "," +
-//                "   price " + "," +
-//                "   cast(order_time as string) as ord_t " +
-//                "from orders " );
-//        resTable.print();
     }
+
+
 
     @FunctionHint(output = @DataTypeHint("ROW<day_info STRING, time_info String>"))
     public static class SplitFunction extends TableFunction<Row> {
